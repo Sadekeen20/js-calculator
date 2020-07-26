@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Online Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Calculator Design Using HTML Layout</h1>
+    <br><br><br><br><br>
+<div class="container">
+  <div class="header">Calculator</div>
+  <input type="text" class="resultx" id="result">
+  <div class="first-row">
+    <br>
+    <br>
+
+  </div>
+  <div class="second-row">
+    <input type="button" name="" value="7" class="global" onclick="putText(7)">
+    <input type="button" name="" value="8" class="global" onclick="putText(8)">
+    <input type="button" name="" value="9" class="global" onclick="putText(9)">
+    <input type="button" name="" value="/" class="global" onclick="putExp('/')">
+  </div>
+  <div class="third-row">
+    <input type="button" name="" value="4" class="global" onclick="putText(4)">
+    <input type="button" name="" value="5" class="global" onclick="putText(5)">
+    <input type="button" name="" value="6" class="global" onclick="putText(6)">
+    <input type="button" name="" value="X" class="global" onclick="putExp('*')">
+  </div>
+  <div class="fourth-row">
+    <input type="button" name="" value="1" class="global" onclick="putText(1)">
+    <input type="button" name="" value="2" class="global" onclick="putText(2)">
+    <input type="button" name="" value="3" class="global" onclick="putText(3)">
+    <input type="button" name="" value="-" class="global" onclick="putExp('-')">
+  </div>
+  <div class="conflict">
+    <div class="left">
+      <input type="button" name="" value="0" class=" big" onclick="putText(0)">
+      <input type="button" name="" value="" class=" small" >
+      <input type="button" name="" value="Del" class=" red small white-text top-margin">
+      <input type="button" name="" value="=" class=" green white-text big top-margin" onclick="putExp('=')">
+    </div>
+    <div class="right">
+      <input type="button" name="" value="+" class="global grey plus" onclick="putExp('+')">
+    </div>
+  </div>
+  <br>
+  <h4 id="operation-indicator" ></h4>
+</div>
+
+  
+<script>
+  var resultBox=document.getElementById('result');
+  var firstValue=0;
+  var secondValue;
+  function putText(value){
+
+    var x=resultBox.value;
+    var appendValue=x+value;
+    resultBox.value=appendValue;
+    console.log(x);
+  }
+    function operationName(artih){
+      var indicator =document.getElementById('operation-indicator');
+      indicator.innerText=artih+' Operation';
+      indicator.style.display='block';
+    }
+    var option=0;
+  function putExp(exp){
+    
+    switch (exp) {
+      case '+':
+        firstValue=parseInt(resultBox.value);
+        console.log(typeof(firstValue));
+        resultBox.value="";
+        operationName('+');
+        option=1;
+        break;
+      case '-':
+        firstValue=parseInt(resultBox.value);
+        console.log(typeof(firstValue));
+        resultBox.value="";
+        operationName('-');
+        option=2;
+        break;
+      case '*':
+        firstValue=parseInt(resultBox.value);
+        console.log(typeof(firstValue));
+        resultBox.value="";
+        operationName('*');       
+        option=3;
+        break;
+      case '/':
+        firstValue=parseInt(resultBox.value);
+        console.log(typeof(firstValue));
+        resultBox.value="";
+        operationName('/');       
+        option=4;
+        break;
+      case '=':
+        var secondValue=parseInt(resultBox.value);
+        
+          switch (option) {
+            case 1:
+            resultBox.value=firstValue+secondValue;      
+              break;
+            case 2:
+            resultBox.value=firstValue-secondValue;  
+              break;
+            case 3:
+            resultBox.value=firstValue*secondValue;  
+              break;
+            case 4:
+            resultBox.value=firstValue/secondValue;  
+              break;
+          
+            default:
+              break;
+          }
+
+        break;
+      default:
+        break;
+    }
+
+  }
+</script>
+</body>
+</html>
