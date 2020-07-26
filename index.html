@@ -39,7 +39,7 @@
     <div class="left">
       <input type="button" name="" value="0" class=" big" onclick="putText(0)">
       <input type="button" name="" value="" class=" small" >
-      <input type="button" name="" value="Del" class=" red small white-text top-margin">
+      <input type="button" name="" value="Del" class=" red small white-text top-margin" onclick="putExp('del')">
       <input type="button" name="" value="=" class=" green white-text big top-margin" onclick="putExp('=')">
     </div>
     <div class="right">
@@ -75,28 +75,28 @@
         firstValue=parseInt(resultBox.value);
         console.log(typeof(firstValue));
         resultBox.value="";
-        operationName('+');
+        operationName('Add ');
         option=1;
         break;
       case '-':
         firstValue=parseInt(resultBox.value);
         console.log(typeof(firstValue));
         resultBox.value="";
-        operationName('-');
+        operationName('Subtract');
         option=2;
         break;
       case '*':
         firstValue=parseInt(resultBox.value);
         console.log(typeof(firstValue));
         resultBox.value="";
-        operationName('*');       
+        operationName('Multiply');       
         option=3;
         break;
       case '/':
         firstValue=parseInt(resultBox.value);
         console.log(typeof(firstValue));
         resultBox.value="";
-        operationName('/');       
+        operationName('Division');       
         option=4;
         break;
       case '=':
@@ -120,6 +120,10 @@
               break;
           }
 
+        break;
+      case 'del':
+        resultBox.value="";
+        firstValue=0;
         break;
       default:
         break;
